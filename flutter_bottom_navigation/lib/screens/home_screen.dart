@@ -26,48 +26,54 @@ class HomeScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   Candi candi = candiList[index];
                   // Tampilan untuk 1 Grid
-                  return Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      margin: const EdgeInsets.all(6),
-                      elevation: 1,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          //GAMBAR CANDI
-                          Expanded(
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(16),
-                              child: Image.asset(
-                                candi.imageAsset,
-                                fit: BoxFit.cover,
+                  return InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/detail', arguments: candi);
+                    },
+                    child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        margin: const EdgeInsets.all(6),
+                        elevation: 1,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            //GAMBAR CANDI
+                            Expanded(
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(16),
+                                child: Image.asset(
+                                  candi.imageAsset,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
-                          ),
-                          //NAMA CANDI
-                          Padding(
-                            padding: const EdgeInsets.only(left: 16, top: 8),
-                            child: Text(
-                              candi.name,
-                              style: const TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
+                            //NAMA CANDI
+                            Padding(
+                              padding: const EdgeInsets.only(left: 16, top: 8),
+                              child: Text(
+                                candi.name,
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
-                          ),
-                          //TIPE CANDI
-                          Padding(
-                            padding: const EdgeInsets.only(left: 16, bottom: 8),
-                            child: Text(
-                              candi.type,
-                              style: const TextStyle(
-                                fontSize: 12,
+                            //TIPE CANDI
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 16, bottom: 8),
+                              child: Text(
+                                candi.type,
+                                style: const TextStyle(
+                                  fontSize: 12,
+                                ),
                               ),
                             ),
-                          ),
-                        ],
-                      ));
+                          ],
+                        )),
+                  );
                 },
               )
             ],
